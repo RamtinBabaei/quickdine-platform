@@ -1,0 +1,5 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const args=process.argv.slice(2);const value=(key)=>args[args.indexOf(key)+1];
+if(!args.includes('--database-id')||!args.includes('--bucket')){console.error('Usage: node scripts/configure-cloudflare.mjs --database-id <D1_UUID> --bucket <R2_BUCKET> [--name quickdine-platform] [--demo]');process.exit(1)}
+const id=value('--database-id'),bucket=value('--bucket');if(!/^[a-f0-9-]{36}$/.test(id)||!/^[a-z0-9-]{3,63}$/.test(bucket))throw new Error('Invalid resource identifier');
+const config=JSON.parse(readFileSync('dist/server/wrangler.json','utf8'));delete config.topLevelName;delete config.dev;config.name=args.includes('--name')?value('--name'):'quickdine-platform';config.d1_databases=[{binding:'DB',database_name:'quickdine',database_id:id,migrations_dir:'../../drizzle'}];config.r2_buckets=[{binding:'BUCKET',bucket_name:bucket}];config.vars={DEMO_MODE:args.includes('--demo')?'true':'false'};config.observability={enabled:true};writeFileSync('dist/server/wrangler.deploy.json',JSON.stringify(config,null,2)+'\n');console.log('Prepared dist/server/wrangler.deploy.json. Apply D1 migrations, then deploy with Wrangler.');
