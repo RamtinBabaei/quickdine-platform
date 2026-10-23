@@ -4,7 +4,7 @@
 
 A full-stack restaurant reservation platform by **Ramtin Babaei**, built with React, TypeScript, Tailwind CSS and a Cloudflare Workers backend. Discover curated dining rooms, check available seats, request a table, and manage the complete hospitality workflow.
 
-[Live demo](https://quickdine-ramtin.shaficp.chatgpt.site) · [Architecture](docs/ARCHITECTURE.md) · [Testing report](docs/TESTING_REPORT.md) · [Deployment](docs/DEPLOYMENT.md) · [راهنمای فارسی اجرای پروژه](docs/LOCAL_SETUP_FA.md)
+[Live demo](https://quickdine-platform.ramtinbabaei-portfolio.workers.dev) · [Architecture](docs/ARCHITECTURE.md) · [Testing report](docs/TESTING_REPORT.md) · [Deployment](docs/DEPLOYMENT.md) · [راهنمای فارسی اجرای پروژه](docs/LOCAL_SETUP_FA.md)
 
 ## What works
 
