@@ -4,7 +4,7 @@
 
 The live demo runs on Cloudflare Workers with managed D1 and R2 bindings through Sites:
 
-https://quickdine-ramtin.shaficp.chatgpt.site
+https://quickdine-platform.ramtinbabaei-portfolio.workers.dev
 
 The demo is public, with isolated optional role demos and a separate shared workspace for registered accounts. Source is published at https://github.com/RamtinBabaei/quickdine-platform. No credentials, account passwords, session data or uploaded user files are included in the source archive.
 
@@ -66,3 +66,8 @@ Before a destructive schema change, export a D1 backup or use the account's conf
 This delivery is a verified portfolio demonstration, not an operated restaurant service. A real launch requires restaurant agreements and real venue content, a privacy/data-retention and deletion policy, verified email and password recovery, transactional notification delivery, monitoring and alerting, backups and a recovery drill, abuse controls such as Turnstile where appropriate, and physical table/occupancy rules if seats-per-service is insufficient. Add payment handling only if the actual product requires deposits or fees.
 
 Load testing, independently measured Lighthouse/Core Web Vitals, Safari/Firefox testing and a third-party security review have not been performed. The unpatched development-only `braces` advisory is recorded in the testing report; keep untrusted patterns out of build/lint configuration and monitor upstream fixes.
+
+
+## Public demo address
+
+The public URL above is served by the account’s dedicated Cloudflare Worker gateway. The gateway forwards requests to the existing application service, preserving its database, uploads, sessions, and application behavior. This changes the public address without migrating or resetting application records. The origin is configured as the `SOURCE_ORIGIN` Worker secret and is not committed to source. Gateway code is in `infrastructure/public-domain/worker.mjs`.
